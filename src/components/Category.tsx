@@ -1,16 +1,21 @@
 import {useEffect, useState} from 'react'
+import { Link } from 'react-router-dom';
 import Tilt from 'react-tilt';
 import { aglaonema, anthurium, aralia, bromelia, cactus, dieffenbachia, dracaena, fern, ficus, flower, foliage, grass, groundcover, hanging, palm, philodendron, plantCategory, sansevieria, schefflera, spathiphyllum, topiairy } from '../assets'
 import { getAllCategories } from '../service';
 import { CategoryType } from '../types/types';
+import Loader from './Loader';
 
 const Category = () => {
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     getAllCategories()
       .then((data) => setCategories(data))
-      .catch((error) => console.log(error))
+      .catch((error) => console.log(error));
+    setLoading(false);
   }, []);
 
 
@@ -21,6 +26,8 @@ const Category = () => {
       case "Palm":
         return palm
       case "Anthurium":
+        return anthurium
+      case "Other":
         return anthurium
       case "Aglaonema":
         return aglaonema
@@ -71,7 +78,8 @@ const Category = () => {
           <img src={plantCategory} alt="plant" className='rounded-full w-96 h-96 object-cover'/>
         </div>
 
-        <div className='mt-26 flex justify-between items-center flex-wrap gap-4'>
+        {loading ? <Loader/> : (
+        <div className='mt-32 flex justify-start items-center flex-wrap gap-4'>
           {categories.map((category: CategoryType) => (
             <Tilt
               options={{
@@ -80,14 +88,16 @@ const Category = () => {
                 speed: 450
               }}
             >
-              <div className='w-64 h-64 relative black-gradient rounded-lg shadow-md shadow-black cursor-pointer'>
-                {/* <div className='absolute inset-0 black-gradient'/> */}
-                <img src={setPhotoForCategory(category.Category)} alt="photo" className='w-full h-full object-cover rounded-lg black-gradient opacity-50'/>
-                <span className='absolute bottom-3 left-3 text-white text-[24px] font-semibold'>{category.Category}</span>
-              </div>
+              <Link to={`/categories/${category.Category}`}>
+                <div className='w-64 h-64 relative black-gradient rounded-lg shadow-md shadow-black cursor-pointer'>
+                  <img src={setPhotoForCategory(category.Category)} alt="photo" className='w-full h-full object-cover rounded-lg black-gradient opacity-50'/>
+                  <span className='absolute bottom-3 left-3 text-white text-[24px] font-semibold'>{category.Category}</span>
+                </div>
+              </Link>
             </Tilt>
           ))}
         </div>
+        )}
     </section>
   )
 }
