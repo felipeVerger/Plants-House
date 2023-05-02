@@ -22,3 +22,6 @@
   background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 100%);
 }
 
+.nav-gradient {
+  background: linear-gradient(180deg, #070707 0%, rgba(7, 7, 7, 0) 100%);
+}

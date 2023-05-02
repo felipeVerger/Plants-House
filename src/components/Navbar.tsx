@@ -1,19 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, FC } from 'react';
 import { BiMenu } from 'react-icons/bi';
 import { IoMdClose } from 'react-icons/io';
-
 import { logo } from '../assets';
 import { navLinks } from '../constants';
 
-
-const Navbar = () => {
+const Navbar:FC = () => {
   const [search, setSearch] = useState("");
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+  const [navToggle, setNavToggle] = useState(false)
+
+  useEffect(() => {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+          setNavToggle(false);
+        } else {
+          setNavToggle(true);
+        }
+        return () => {
+          window.removeEventListener('scroll', {});
+        };
+      }
+      );
+  }, []);
 
 
   return (
-    <nav className="px-10 py-4 w-full sticky top-0 z-20 bg-black">
+    <nav className={`${navToggle ? "nav-gradient" : "bg-black"} px-10 py-4 w-full sticky top-0 z-20`}>
       <div className="w-full flex justify-between items-center">
         <div className="w-full">
           <a href="#home" className="flex items-center gap-4">
