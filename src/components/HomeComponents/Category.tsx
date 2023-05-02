@@ -26,7 +26,7 @@ import {
   topiairy,
 } from "../../assets";
 import { getAllCategories } from "../../service";
-import { CategoryType } from "../../types/types";
+import { CategoryType } from "../../types/api";
 import Loader from "../Loader";
 
 const Category = () => {

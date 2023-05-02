@@ -1,8 +1,6 @@
 import { useState, useEffect, FC } from 'react';
-import { BiMenu } from 'react-icons/bi';
-import { IoMdClose } from 'react-icons/io';
 import { logo } from '../assets';
-import { navLinks } from '../constants';
+import { FcSearch } from 'react-icons/fc';
 
 const Navbar:FC = () => {
   const [search, setSearch] = useState("");
@@ -36,58 +34,16 @@ const Navbar:FC = () => {
             </p>
           </a>
         </div>
-        <div className="w-full hidden sm:block">
+        <div className="max-w-lg w-full hidden sm:block relative">
           <input
             type="text"
             name="search"
             value={search}
             placeholder="Search for a plant"
             onChange={(e) => setSearch(e.target.value)}
-            className="px-2 py-2 w-full border-none outline-none rounded-md md:w-[300px]"
+            className="px-2 py-2 w-full border-none outline-none rounded-md"
           />
-        </div>
-        <ul className="hidden md:flex gap-10">
-          {navLinks.map((link) => (
-            <li
-              key={link.id}
-              className={`${
-                active === link.title ? "text-white" : "text-lime-500"
-              } hover:text-white text-[16px] font-medium cursor-pointer`}
-              onClick={() => setActive(link.title)}
-            >
-              <a href={`#${link.id}`}>{link.title}</a>
-            </li>
-          ))}
-        </ul>
-
-        {/* mobile device */}
-        <div className="block ml-6 md:hidden">
-          {!toggle ? (
-            <BiMenu
-              className="text-white text-3xl"
-              onClick={() => setToggle(!toggle)}
-            />
-          ) : (
-            <IoMdClose
-              className="text-white text-3xl"
-              onClick={() => setToggle(!toggle)}
-            />
-          )}
-          <div className={`${toggle ? 'block' : 'hidden'} p-6 black-gradient absolute top-15 right-10 mx-4 my-2 min-w[140px] z-10 rounded-xl rounded-tr-sm`}>
-            <ul className="list-none flex justify-end items-start flex-col gap-4 ">
-              {navLinks.map((link) => (
-                <li
-                  key={link.id}
-                  className={`${
-                    active === link.title ? "text-white" : "text-lime-500"
-                  } hover:text-white text-[16px] font-medium cursor-pointer`}
-                  onClick={() => setActive(link.title)}
-                >
-                  <a href={`#${link.id}`}>{link.title}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FcSearch className='absolute right-4 top-[10px] text-xl'/>
         </div>
       </div>
     </nav>
