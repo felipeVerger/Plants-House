@@ -30,3 +30,7 @@ export const heroCards = [
         image: heroCard3
     }
 ]
+
+export const categories = [
+    
+]

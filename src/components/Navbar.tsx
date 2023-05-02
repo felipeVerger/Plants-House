@@ -1,29 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, FC } from 'react';
 import { BiMenu } from 'react-icons/bi';
 import { IoMdClose } from 'react-icons/io';
-
 import { logo } from '../assets';
 import { navLinks } from '../constants';
 
-
-const Navbar = () => {
+const Navbar:FC = () => {
   const [search, setSearch] = useState("");
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [navToggle, setNavToggle] = useState(false)
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        setNavToggle(false);
-      } else {
-        setNavToggle(true);
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+          setNavToggle(false);
+        } else {
+          setNavToggle(true);
+        }
+        return () => {
+          window.removeEventListener('scroll', {});
+        };
       }
-      return () => {
-        window.removeEventListener('scroll', {});
-      };
-    }
-    );
+      );
   }, []);
 
 

@@ -1,15 +1,11 @@
-import React from 'react'
-import { Navbar, Hero, Category } from "../components"
+import { Category } from "../components"
+import Layout from '../components/Layout'
 
 const Home = () => {
   return (
-    <div className="relative z-0">
-      <div className="green-gradient">
-        <Navbar/>
-        <Hero/>
-      </div>
+    <Layout showHero={true}>
       <Category/>
-    </div>
+    </Layout>
   )
 }
 

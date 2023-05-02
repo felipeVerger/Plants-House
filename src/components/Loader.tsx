@@ -1,8 +1,14 @@
-import React from 'react'
+import { DotSpinner } from '@uiball/loaders'
 
 const Loader = () => {
   return (
-    <div className='w-[36px] h-[36px] border-4 border-lime-600 border-l-transparent  animate-spin'></div>
+    <div className='w-full h-screen flex justify-center items-center'>
+      <DotSpinner 
+        size={40}
+        speed={0.9} 
+        color="black" 
+      />
+    </div>
   )
 }
 

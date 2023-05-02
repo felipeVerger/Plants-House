@@ -1,11 +1,23 @@
-import { Categories } from "../types/types";
+import {  ByCategory, CategoryType } from "../types/types";
 
-export const getAllCategories = async ():Promise<Categories> => {
-    const response = await fetch("https://house-plants2.p.rapidapi.com/categories", {
-        headers: {
-            'X-RapidAPI-Key': 'c258715b99msh0433246a68387f3p19683djsnbd539385787c',
-        }
-    });
+const BASE_URL = "https://house-plants2.p.rapidapi.com"
+const headers = {
+    'X-RapidAPI-Key': import.meta.env.VITE_RAPID_API_KEY
+}
+
+export const getAllCategories = async ():Promise<CategoryType[]> => {
+    
+    const response = await fetch(`${BASE_URL}/categories`, {headers});
     const data = await response.json();
     return data;
+}
+
+export const getByCategory = async (categoryName: string):Promise<ByCategory[] | undefined> => {
+    try {
+        const response = await fetch(`${BASE_URL}/category/${categoryName}`, {headers})
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
 }
