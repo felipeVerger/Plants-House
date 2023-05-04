@@ -1,27 +1,17 @@
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { getByCategory } from '../service';
-import { ByCategory } from '../types/types';
-import Layout from '../components/Layout';
+import { useParams } from "react-router-dom";
+import Layout from "../components/Layout";
+import { useCategory } from "../hooks/useCategory";
 
 const Categories = () => {
   const { category: categoryName } = useParams();
-  const [category, setCategory] = useState<ByCategory[] | undefined>([]);
-  
-  useEffect(() => {
-    getByCategory(categoryName as string)
-      .then((data) => setCategory(data))
-      .catch((err) => console.log(err));
-  }, [])
 
-  console.log(category);
-  
-  
+  const { } = useCategory(categoryName!);
+
   return (
     <Layout showHero={false}>
       
     </Layout>
   )
-}
+};
 
-export default Categories
+export default Categories;
