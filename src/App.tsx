@@ -3,12 +3,11 @@ import Home from "./pages/Home"
 import Categories from "./pages/Categories"
 
 function App() {
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/categories/:category" element={<Categories/>}/>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/categories/:category" element={<Categories/>}/>
       </Routes>
     </BrowserRouter>
   )

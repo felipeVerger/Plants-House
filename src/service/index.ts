@@ -6,7 +6,6 @@ const headers = {
 }
 
 export const getAllCategories = async (): Promise<CategoryType[]> => {
-
     const response = await fetch(`${BASE_URL}/categories`, { headers });
     const data = await response.json();
     return data;
@@ -21,3 +20,12 @@ export const getByCategory = async (categoryName: string): Promise<ByCategory[] 
         console.log(error);
     }
 }
+
+// export const getAllCategories = async ():Promise<CategoryType[]> => {
+//     try {
+//         const { data } = rapidApi.get<CategoryType[]>('/categories');
+//         return data;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }

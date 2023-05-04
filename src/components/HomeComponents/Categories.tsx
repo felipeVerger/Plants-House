@@ -1,7 +1,3 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Tilt from "react-tilt";
-
 import {
   aglaonema,
   anthurium,
@@ -25,21 +21,13 @@ import {
   spathiphyllum,
   topiairy,
 } from "../../assets";
-import { getAllCategories } from "../../service";
+import { useCategories } from "../../hooks/useCategories";
 import { CategoryType } from "../../types/api";
 import Loader from "../Loader";
+import CategoryCard from "./CategoryCard";
 
-const Category = () => {
-  const [categories, setCategories] = useState<CategoryType[]>([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    getAllCategories()
-      .then((data) => setCategories(data))
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
-  }, []);
+const Categories = () => {
+  const { data, isLoading } = useCategories();
 
   const setPhotoForCategory = (category: string) => {
     switch (category) {
@@ -91,13 +79,13 @@ const Category = () => {
   };
 
   return (
-    <section className="w-full mt-32 px-28">
+    <section className="w-full mt-32 px-14 lg:px-28">
       <div className="w-full flex justify-between items-center gap-24">
         <div className="flex flex-col gap-4">
-          <h2 className="text-lime-700 font-bold text-[32px]">
+          <h2 className="text-lime-700 font-bold text-[32px] text-center lg:text-left">
             Explore the Diverse Categories of Plant Types
           </h2>
-          <p className="text-[#8C8C8C] text-[16px] font-medium">
+          <p className="text-[#8C8C8C] text-[16px] font-medium text-center lg:text-left">
             Welcome to our plant web page, where you can explore the diverse
             categories of plant types. Our collection features an extensive
             range of plant species from all corners of the world, each with its
@@ -112,36 +100,16 @@ const Category = () => {
         <img
           src={plantCategory}
           alt="plant"
-          className="rounded-full w-96 h-96 object-cover"
+          className="hidden lg:block rounded-full w-96 h-96 object-cover"
         />
       </div>
 
-      {loading ? (
+      {isLoading ? (
         <Loader />
       ) : (
-        <div className="mt-32 flex justify-start items-center flex-wrap gap-4">
-          {categories?.map((category: CategoryType) => (
-            <Tilt
-              options={{
-                max: 45,
-                scale: 1,
-                speed: 450,
-              }}
-              key={category.Category}
-            >
-              <Link to={`/categories/${category.Category}`}>
-                <div className="w-64 h-64 relative black-gradient rounded-lg shadow-md shadow-black cursor-pointer">
-                  <img
-                    src={setPhotoForCategory(category.Category)}
-                    alt="photo"
-                    className="w-full h-full object-cover rounded-lg black-gradient opacity-50"
-                  />
-                  <span className="absolute bottom-3 left-3 text-white text-[24px] font-semibold">
-                    {category.Category}
-                  </span>
-                </div>
-              </Link>
-            </Tilt>
+        <div className="mt-32 flex justify-center lg:justify-start items-center flex-wrap gap-4">
+          {data?.map((category: CategoryType) => (
+            <CategoryCard key={category.Category} category={category} setPhotoForCategory={setPhotoForCategory}/>
           ))}
         </div>
       )}
@@ -149,4 +117,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default Categories;
