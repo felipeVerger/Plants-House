@@ -23,7 +23,7 @@ import {
 } from "../../assets";
 import { useCategories } from "../../hooks/useCategories";
 import { CategoryType } from "../../types/api";
-import Loader from "../Loader";
+import Loader from "../shared/Loader";
 import CategoryCard from "./CategoryCard";
 
 const Categories = () => {
@@ -109,7 +109,11 @@ const Categories = () => {
       ) : (
         <div className="mt-32 flex justify-center lg:justify-start items-center flex-wrap gap-4">
           {data?.map((category: CategoryType) => (
-            <CategoryCard key={category.Category} category={category} setPhotoForCategory={setPhotoForCategory}/>
+            <CategoryCard
+              key={category.Category}
+              category={category}
+              setPhotoForCategory={setPhotoForCategory}
+            />
           ))}
         </div>
       )}
