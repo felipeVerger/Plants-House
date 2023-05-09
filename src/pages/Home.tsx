@@ -1,12 +1,12 @@
-import { Category } from "../components"
-import Layout from '../components/Layout'
+import { Category } from "../components";
+import Layout from "../components/Layout/Layout";
 
 const Home = () => {
   return (
     <Layout showHero={true}>
-      <Category/>
+      <Category />
     </Layout>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
