@@ -37,13 +37,13 @@ const Navbar: FC = () => {
         navToggle ? "nav-gradient" : "bg-black"
       } px-10 py-4 w-full sticky top-0 z-20`}
     >
-      <div className="w-full flex justify-between items-center">
+      <div className="w-full flex justify-between items-center gap-4">
         {/* LOGO */}
         <Link to="/">
           <div className="w-full">
             <a href="#home" className="flex items-center gap-4">
               <img src={logo} alt="logo" className="w-12 h-12 object-contain" />
-              <p className="text-white text-[18px] font-bold cursor-pointer">
+              <p className="text-white text-[18px] font-bold cursor-pointer hidden sm:block">
                 Plants House
               </p>
             </a>
