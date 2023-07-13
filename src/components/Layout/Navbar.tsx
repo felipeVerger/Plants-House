@@ -34,7 +34,7 @@ const Navbar: FC = () => {
   return (
     <nav
       className={`${
-        navToggle ? "nav-gradient" : "bg-black"
+        navToggle ? "nav-gradient" : "bg-secondaryBg"
       } px-10 py-4 w-full sticky top-0 z-20`}
     >
       <div className="w-full flex justify-between items-center gap-4">
@@ -43,7 +43,7 @@ const Navbar: FC = () => {
           <div className="w-full">
             <a href="#home" className="flex items-center gap-4">
               <img src={logo} alt="logo" className="w-12 h-12 object-contain" />
-              <p className="text-white text-[18px] font-bold cursor-pointer hidden sm:block">
+              <p className="text-textPrimary text-[18px] font-bold cursor-pointer hidden sm:block">
                 Plants House
               </p>
             </a>
@@ -57,7 +57,7 @@ const Navbar: FC = () => {
             value={selectedOption}
             placeholder="Search for a plant"
             onChange={(e) => setSelectedOption(e.target.value)}
-            className="px-2 py-2 w-full border-none outline-none rounded-md appearance-none"
+            className="text-textPrimary px-2 py-2 w-full border-2 border-textPrimary outline-none rounded-md appearance-none"
           >
             <option value="" disabled>
               Selecciona una categoria
@@ -69,7 +69,7 @@ const Navbar: FC = () => {
             ))}
           </select>
           <button type="submit" onClick={(e) => handleSubmit(e)}>
-            <BsSearch className="absolute right-4 top-[10px] text-xl" />
+            <BsSearch className="text-textPrimary absolute right-4 top-[10px] text-xl" />
           </button>
         </div>
 

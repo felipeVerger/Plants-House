@@ -6,12 +6,12 @@ const Hero = () => {
     <section className="w-full h-full relative mx-auto lg:h-screen">
       <div className="w-full flex flex-col lg:flex-row justify-between items-center gap-4 mt-12 px-24 md:px-36 xl:px-60">
         <div className="flex flex-col  text-center gap-2 lg:text-left">
-          <h1 className="text-white text-[54px] font-bold xl:text-[64px]">
+          <h1 className="text-textPrimary text-[54px] font-bold xl:text-[64px]">
             Grow Your <br />
-            Own <span className="text-lime-500">Favorite</span> <br />
+            Own <span className="text-textSpecial">Favorite</span> <br />
             Plant
           </h1>
-          <p className="text-white text-[16px] font-medium xl:text-[24px]">
+          <p className="text-textSecondary text-[16px] font-medium xl:text-[24px]">
             We help you to find and grow the
             <br /> perfect plant for a beautiful garden
           </p>

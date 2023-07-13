@@ -11,11 +11,11 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children, showHero }) => {
   return (
     <div className="relative z-0 h-screen flex flex-col justify-between">
-      <div className="green-gradient">
+      <div className="bg-background">
         <Navbar />
         {showHero && <Hero />}
       </div>
-      <main className="flex-1">
+      <main className="flex-1 bg-background">
         {children}
       </main>
       <Footer/>

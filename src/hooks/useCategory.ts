@@ -5,6 +5,5 @@ export const useCategory = (categoryName: string) => {
     const getByCategoryQuery = useQuery(['category', categoryName], () => getByCategory(categoryName), {
         refetchOnWindowFocus: false
     })
-
     return getByCategoryQuery;
 }
